@@ -27,8 +27,9 @@ class _AvailableSizeState extends State<AvailableSize> {
         borderRadius: BorderRadius.circular(6),
         border: Border.all(color: Colors.red)
       ),
-      child: const Text(
-        "", style:  TextStyle(
+      child: Text(
+        widget.size, 
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
         ),
       ),
