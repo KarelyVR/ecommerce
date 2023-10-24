@@ -20,3 +20,23 @@ class Product {
     );
   }
 }
+
+class CartItem {
+  final int productId;
+  int quantity;
+
+  CartItem({
+    required this.productId,
+    required this.quantity,
+  });
+}
+
+class CartItemProduct {
+  final Product product;
+  final int quantity;
+
+  CartItemProduct({
+    required this.product,
+    required this.quantity,
+  });
+}

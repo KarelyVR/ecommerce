@@ -47,12 +47,34 @@ class ProductList extends StatelessWidget {
                 title: Text(product.title),
                 subtitle: Text("\$${product.price.toStringAsFixed(2)}"),
                 leading: Image.network(product.image),
+                trailing: ElevatedButton(
+                  onPressed: () {
+                    BlocProvider.of<ProductBloc>(context)
+                        .add(AddToCartEvent(product.id));
+                  },
+                  child: Text('Agregar al carrito'),
+                ),
               );
             },
           );
-        } else {
-          return const Center(child: Text('Error al cargar los productos'));
+        } else if (state is CartUpdatedState) {
+          // Render the cart items here, for example:
+          final cartItems = state.cartItems;
+          return ListView.builder(
+            itemCount: cartItems.length,
+            itemBuilder: (context, index) {
+              final cartItem = cartItems[index];
+              return ListTile(
+                title: Text(cartItem.product.title),
+                subtitle: Text("Cantidad: ${cartItem.quantity}"),
+                leading: Image.network(cartItem.product.image),
+              );
+            },
+          );
         }
+
+        // Si ninguno de los casos anteriores se cumple, devuelve un widget vacío
+        return Container();
       },
     );
   }
