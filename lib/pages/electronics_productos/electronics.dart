@@ -1,18 +1,18 @@
-class Electronics {
+class Electronicos {
   final int id;
   final String title;
   final double price;
   final String image;
 
-  Electronics({
+  Electronicos({
     required this.id,
     required this.title,
     required this.price,
     required this.image,
   });
 
-  factory Electronics.fromJson(Map<String, dynamic> json) {
-    return Electronics(
+  factory Electronicos.fromJson(Map<String, dynamic> json) {
+    return Electronicos(
       id: json['id'],
       title: json['title'],
       price: json['price'].toDouble(),

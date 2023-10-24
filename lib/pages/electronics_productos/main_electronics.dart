@@ -2,35 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ecommerce/pages/electronics_productos/electronics_bloc.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Electronics(),
-    );
-  }
-}
-
 class Electronics extends StatelessWidget {
+  const Electronics({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Todo los electrónicos'),
-      ),
-      body: BlocProvider(
+      body: BlocProvider<ElectronicsBloc>(
         create: (context) => ElectronicsBloc()..add(FetchElectronicsEvent()),
-        child: ElectronicsList(),
+        child: const ElectronicsList(),
       ),
     );
   }
 }
 
 class ElectronicsList extends StatelessWidget {
+  const ElectronicsList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ElectronicsBloc, ElectronicsState>(
@@ -38,11 +26,11 @@ class ElectronicsList extends StatelessWidget {
         if (state is ElectronicsInitialState) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is ElectronicsLoadSuccessState) {
-          final jewelry = state.electronics;
+          final electronics = state.electronics;
           return ListView.builder(
-            itemCount: jewelry.length,
+            itemCount: electronics.length,
             itemBuilder: (context, index) {
-              final item = jewelry[index];
+              final item = electronics[index];
               return ListTile(
                 title: Text(item.title),
                 subtitle: Text("\$${item.price.toStringAsFixed(2)}"),

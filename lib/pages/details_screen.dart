@@ -29,7 +29,7 @@ class DetailsScreen extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: Colors.red.shade100,
                 ),
-                child: Image.asset(product.image, fit:BoxFit.cover),
+                child: Image.network(product.image, fit:BoxFit.cover),
               ),
             ],
           ),

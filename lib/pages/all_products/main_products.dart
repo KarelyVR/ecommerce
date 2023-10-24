@@ -2,20 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ecommerce/pages/all_products/product_bloc.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ECommerceGallery(),
-    );
-  }
-}
 
 class ECommerceGallery extends StatelessWidget {
+  const ECommerceGallery({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,13 +14,15 @@ class ECommerceGallery extends StatelessWidget {
       ),
       body: BlocProvider(
         create: (context) => ProductBloc()..add(FetchProductsEvent()),
-        child: ProductList(),
+        child: const ProductList(),
       ),
     );
   }
 }
 
 class ProductList extends StatelessWidget {
+  const ProductList({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProductBloc, ProductState>(

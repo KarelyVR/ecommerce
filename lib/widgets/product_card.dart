@@ -40,7 +40,7 @@ class _ProductCardState extends State<ProductCard> {
           SizedBox(
             height: 130,
             width: 130,
-            child: Image.asset(
+            child: Image.network(
               widget.product.image,
               fit: BoxFit.cover,
             ),

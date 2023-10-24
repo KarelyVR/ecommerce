@@ -1,5 +1,3 @@
-// jewelry_bloc.dart
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:async';
@@ -48,6 +46,9 @@ class JewelryBloc extends Bloc<JewelryEvent, JewelryState> {
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
       final List<Jewelry> jewelry = await compute(parseJewelry, data);
+      /*compute permite que la función parseJewelry se ejecute en un isolate separado, 
+      lo que mejora el rendimiento al evitar bloquear la interfaz de usuario durante 
+      la solicitud y el procesamiento de datos.*/
       return jewelry;
     } else {
       throw Exception('Error al cargar los productos');

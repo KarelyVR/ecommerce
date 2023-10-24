@@ -123,6 +123,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  isolates:
+    dependency: "direct main"
+    description:
+      name: isolates
+      sha256: ce89e4141b27b877326d3715be2dceac7a7ba89f3229785816d2d318a75ddf28
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.3+8"
   lints:
     dependency: transitive
     description:

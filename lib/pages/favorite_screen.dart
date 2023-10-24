@@ -67,7 +67,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                       ),
                       leading: CircleAvatar(
                         radius: 30,
-                        backgroundImage: AssetImage(finalList[index].image),
+                        backgroundImage: NetworkImage(finalList[index].image),
                         backgroundColor: Colors.red.shade100,
                       ),
                       trailing: Text(

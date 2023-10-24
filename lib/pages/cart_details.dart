@@ -12,6 +12,7 @@ class CartDetails extends StatefulWidget {
 }
 
 class _CartDetailsState extends State<CartDetails> {
+   final int minQuantity = 1;
   @override
   Widget build(BuildContext context) {
     final provider = CartProvider.of(context);
@@ -21,9 +22,16 @@ class _CartDetailsState extends State<CartDetails> {
       return GestureDetector(
         onTap: (){
           setState(() {
-            icon == Icons.add
-            ? provider.incrementQuantity(index)
-            : provider.decrementQuantity(index);
+            // icon == Icons.add
+            // ? provider.incrementQuantity(index)
+            // : provider.decrementQuantity(index);
+            if (icon == Icons.add) {
+              finalList[index].quantity++;
+            } else {
+              if (finalList[index].quantity > minQuantity) {
+                finalList[index].quantity--;
+              }
+            }
           });
         },
         child: Container(
@@ -95,7 +103,7 @@ class _CartDetailsState extends State<CartDetails> {
                       ),
                       leading: CircleAvatar(
                         radius: 30,
-                        backgroundImage: AssetImage(finalList[index].image),
+                        backgroundImage: NetworkImage(finalList[index].image),
                         backgroundColor: Colors.red.shade100,
                       ),
                       trailing: Column(
@@ -139,6 +147,13 @@ class _CartDetailsState extends State<CartDetails> {
                     fontSize: 40,
                     fontWeight: FontWeight.bold
                   ),
+                ),
+                ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.pop(context); // Esto regresará a la pantalla anterior
+                  },
+                  icon: const Icon(Icons.arrow_back), // Icono de flecha hacia atrás
+                  label: const Text("Volver"),
                 ),
                 ElevatedButton.icon(
                   onPressed: (){},
