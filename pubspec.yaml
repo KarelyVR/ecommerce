@@ -42,6 +42,7 @@ dependencies:
   provider: ^6.0.5 
   flutter_slidable: ^2.0.0
   isolates: ^3.0.3+8
+  flutter_svg: ^2.0.8
 
 dev_dependencies:
   flutter_test:
