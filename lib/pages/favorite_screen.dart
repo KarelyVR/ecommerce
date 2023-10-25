@@ -57,7 +57,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                       title: Text(
                         finalList[index].name,
                         style: const TextStyle(
-                          fontSize: 20,
+                          fontSize: 15,
                           fontWeight: FontWeight.bold
                         ),
                       ),
@@ -73,7 +73,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                       trailing: Text(
                         '\$${finalList[index].price}',
                         style: const TextStyle(
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold
                         ),
                       ),

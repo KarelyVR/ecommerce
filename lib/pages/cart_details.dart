@@ -90,7 +90,7 @@ class _CartDetailsState extends State<CartDetails> {
                       title: Text(
                         finalList[index].name,
                         style: const TextStyle(
-                          fontSize: 20,
+                          fontSize: 17,
                           fontWeight: FontWeight.bold
                         ),
                       ),
@@ -130,7 +130,7 @@ class _CartDetailsState extends State<CartDetails> {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             alignment: Alignment.center,
             width: double.infinity,
-            height: 100,
+            height: 110,
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(

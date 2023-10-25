@@ -38,8 +38,8 @@ class _ProductCardState extends State<ProductCard> {
             ],
           ),
           SizedBox(
-            height: 130,
-            width: 130,
+            height: 115,
+            width: 115,
             child: Image.network(
               widget.product.image,
               fit: BoxFit.cover,
@@ -48,21 +48,21 @@ class _ProductCardState extends State<ProductCard> {
           Text(
             widget.product.name,
             style: const TextStyle(
-              fontSize: 16,
+              fontSize: 12,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
             widget.product.category,
             style: const TextStyle(
-              fontSize: 14,
+              fontSize: 12,
               color: Colors.red,
             ),
           ),
           Text(
             '\$' '${widget.product.price}',
             style: const TextStyle(
-              fontSize: 18,
+              fontSize: 15,
               fontWeight: FontWeight.bold,
             ),
           ),
