@@ -41,7 +41,7 @@ class _CartDetailsState extends State<CartDetails> {
           ),
           child: Icon(
             icon,
-            size: 20,
+            size: 19,
           ),
         ),
       );
@@ -130,7 +130,7 @@ class _CartDetailsState extends State<CartDetails> {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             alignment: Alignment.center,
             width: double.infinity,
-            height: 110,
+            height: 100,
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -144,7 +144,7 @@ class _CartDetailsState extends State<CartDetails> {
                 Text(
                   '\$${provider.getTotalPrice()}',
                   style: const TextStyle(
-                    fontSize: 40,
+                    fontSize: 30,
                     fontWeight: FontWeight.bold
                   ),
                 ),
