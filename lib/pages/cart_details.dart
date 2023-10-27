@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:ecommerce/pages/ticket.dart';
 import 'package:ecommerce/pages/ticket_screen.dart';
 import 'package:ecommerce/providers/cart_provider.dart';
@@ -170,8 +172,8 @@ class _CartDetailsState extends State<CartDetails> {
                       ),
                     );
                   },
-                  icon: Icon(Icons.send),
-                  label: Text("Comprar"),
+                  icon: const Icon(Icons.send),
+                  label: const Text("Comprar"),
                 ),
               ],
             ),

@@ -6,7 +6,7 @@ class TicketScreen extends StatelessWidget {
   final List<TicketItem> cartItems;
   final double totalPrice;
 
-  TicketScreen({required this.cartItems, required this.totalPrice});
+  const TicketScreen({super.key, required this.cartItems, required this.totalPrice});
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +36,17 @@ class TicketScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => TicketForm(),
+                    builder: (context) => const TicketForm(),
                   ),
                 );
               },
-              child: Text('Ticket digital'),
+              child: const Text('Ticket digital'),
             )
           ],
         ),

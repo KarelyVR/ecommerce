@@ -228,10 +228,10 @@ packages:
     dependency: "direct main"
     description:
       name: provider
-      sha256: cdbe7530b12ecd9eb455bdaa2fcb8d4dad22e80b8afb4798b41479d5ce26847f
+      sha256: b859a4e3725b5ea7894701f6481865f3f35526742d446e1d22643e8a93c63886
       url: "https://pub.dev"
     source: hosted
-    version: "6.0.5"
+    version: "6.1.0-dev.1"
   sky_engine:
     dependency: transitive
     description: flutter

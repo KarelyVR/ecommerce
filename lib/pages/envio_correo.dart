@@ -1,19 +1,23 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+// void main() {
+//   runApp(MyApp());
+// }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: TicketForm(),
-    );
-  }
-}
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: TicketForm(),
+//     );
+//   }
+// }
 
 class TicketForm extends StatefulWidget {
+  const TicketForm({super.key});
+
   @override
   _TicketFormState createState() => _TicketFormState();
 }
@@ -27,30 +31,30 @@ class _TicketFormState extends State<TicketForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Formulario"),
+        title: const Text("Formulario"),
         backgroundColor: Colors.red,
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 30.0),
+              padding: const EdgeInsets.symmetric(vertical: 30.0),
               child: TextField(
                 controller: nameController,
-                decoration: InputDecoration(labelText: "Nombre y Apellidos"),
+                decoration: const InputDecoration(labelText: "Nombre y Apellidos"),
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 30.0),
+              padding: const EdgeInsets.symmetric(vertical: 30.0),
               child: TextField(
                 controller: emailController,
-                decoration: InputDecoration(labelText: "Correo Electrónico"),
+                decoration: const InputDecoration(labelText: "Correo Electrónico"),
               ),
             ),
             Row(
               children: <Widget>[
-                Text("¿Necesita factura?"),
+                const Text("¿Necesita factura?"),
                 Switch(
                   value: needsInvoice,
                   onChanged: (value) {
@@ -61,12 +65,12 @@ class _TicketFormState extends State<TicketForm> {
                 ),
               ],
             ),
-            SizedBox(height: 30.0),
+            const SizedBox(height: 30.0),
             ElevatedButton(
               onPressed: () {
                 _showConfirmationDialog();
               },
-              child: Text("Enviar"),
+              child: const Text("Enviar"),
             ),
           ],
         ),
@@ -79,14 +83,14 @@ class _TicketFormState extends State<TicketForm> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Envío exitoso"),
-          content: Text("El ticket se ha enviado exitosamente."),
+          title: const Text("Envío exitoso"),
+          content: const Text("El ticket se ha enviado exitosamente."),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text("Cerrar"),
+              child: const Text("Cerrar"),
             ),
           ],
         );
