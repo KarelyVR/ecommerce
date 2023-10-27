@@ -1,5 +1,5 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers
-
+import 'package:ecommerce/pages/ticket.dart';
+import 'package:ecommerce/pages/ticket_screen.dart';
 import 'package:ecommerce/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -12,15 +12,15 @@ class CartDetails extends StatefulWidget {
 }
 
 class _CartDetailsState extends State<CartDetails> {
-   final int minQuantity = 1;
+  final int minQuantity = 1;
   @override
   Widget build(BuildContext context) {
     final provider = CartProvider.of(context);
     final finalList = provider.cart;
 
-    _buildProductQuantity(IconData icon, int index){
+    _buildProductQuantity(IconData icon, int index) {
       return GestureDetector(
-        onTap: (){
+        onTap: () {
           setState(() {
             // icon == Icons.add
             // ? provider.incrementQuantity(index)
@@ -46,19 +46,17 @@ class _CartDetailsState extends State<CartDetails> {
         ),
       );
     }
+
     return Scaffold(
       body: Column(
         children: [
           const Padding(
-            padding: EdgeInsets.only(top: 20,left: 20),
+            padding: EdgeInsets.only(top: 20, left: 20),
             child: Row(
               children: [
                 Text(
                   "Carrito",
-                  style: TextStyle(
-                    fontSize: 27,
-                    fontWeight: FontWeight.bold
-                  ),
+                  style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
                 )
               ],
             ),
@@ -66,15 +64,15 @@ class _CartDetailsState extends State<CartDetails> {
           Expanded(
             child: ListView.builder(
               itemCount: finalList.length,
-              itemBuilder: (context, index){
+              itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Slidable(
                     endActionPane: ActionPane(
-                      motion: const ScrollMotion(), 
+                      motion: const ScrollMotion(),
                       children: [
                         SlidableAction(
-                          onPressed: (context){
+                          onPressed: (context) {
                             finalList[index].quantity = 1;
                             finalList.removeAt(index);
                             setState(() {});
@@ -90,16 +88,12 @@ class _CartDetailsState extends State<CartDetails> {
                       title: Text(
                         finalList[index].name,
                         style: const TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold
-                        ),
+                            fontSize: 17, fontWeight: FontWeight.bold),
                       ),
                       subtitle: Text(
                         '\$${finalList[index].price}',
                         style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold
-                        ),
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       leading: CircleAvatar(
                         radius: 30,
@@ -107,7 +101,7 @@ class _CartDetailsState extends State<CartDetails> {
                         backgroundColor: Colors.red.shade100,
                       ),
                       trailing: Column(
-                        children:[
+                        children: [
                           _buildProductQuantity(Icons.add, index),
                           Text(
                             finalList[index].quantity.toString(),
@@ -132,33 +126,52 @@ class _CartDetailsState extends State<CartDetails> {
             width: double.infinity,
             height: 100,
             decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
-              )
-            ),
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                )),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   '\$${provider.getTotalPrice()}',
                   style: const TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold
-                  ),
+                      fontSize: 30, fontWeight: FontWeight.bold),
                 ),
                 ElevatedButton.icon(
                   onPressed: () {
-                    Navigator.pop(context); // Esto regresará a la pantalla anterior
+                    Navigator.pop(
+                        context); // Esto regresará a la pantalla anterior
                   },
-                  icon: const Icon(Icons.arrow_back), // Icono de flecha hacia atrás
+                  icon: const Icon(
+                      Icons.arrow_back), // Icono de flecha hacia atrás
                   label: const Text("Volver"),
                 ),
                 ElevatedButton.icon(
-                  onPressed: (){},
-                  icon: const Icon(Icons.send),
-                  label: const Text("Comprar"),
+                  onPressed: () {
+                    // Obtén la lista de productos y el precio total del carrito
+                    final List<TicketItem> cartItems =
+                        provider.cart.map((item) {
+                      return TicketItem(
+                        name: item.name,
+                        price: item.price,
+                        quantity: item.quantity,
+                      );
+                    }).toList();
+                    double totalPrice = provider.getTotalPrice();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TicketScreen(
+                          cartItems: cartItems,
+                          totalPrice: totalPrice,
+                        ),
+                      ),
+                    );
+                  },
+                  icon: Icon(Icons.send),
+                  label: Text("Comprar"),
                 ),
               ],
             ),
