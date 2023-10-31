@@ -4,9 +4,14 @@ import 'package:ecommerce/pages/ticket.dart';
 
 class TicketScreen extends StatelessWidget {
   final List<TicketItem> cartItems;
-  final double totalPrice;
+  final double precioTotal;
+  final double precioTotalEnvio;
+  final double costoEnvio;
 
-  const TicketScreen({super.key, required this.cartItems, required this.totalPrice});
+  const TicketScreen({Key? key, required this.cartItems, required this.precioTotal})
+      : costoEnvio = 100.00,
+        precioTotalEnvio = precioTotal + 100.00,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +35,21 @@ class TicketScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Total: \$${totalPrice.toStringAsFixed(2)}',
+              'Subtotal: \$${precioTotal.toStringAsFixed(2)}',
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              'Costo envio: \$${costoEnvio.toStringAsFixed(2)}',
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              'Total: \$${precioTotalEnvio.toStringAsFixed(2)}', 
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -42,11 +61,16 @@ class TicketScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const TicketForm(),
+                    builder: (context) => SendMailFromLocalHost(
+                      cartItems: cartItems, // Lista de elementos del carrito
+                      totalPrice: precioTotalEnvio, // Precio total con envío
+                      costoEnvio: costoEnvio, // Costo de envío
+                      precioTotal: precioTotal, // Precio total
+                    ),
                   ),
                 );
               },
-              child: const Text('Ticket digital'),
+              child: const Text('Enviar ticket por correo'),
             )
           ],
         ),

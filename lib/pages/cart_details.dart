@@ -24,9 +24,6 @@ class _CartDetailsState extends State<CartDetails> {
       return GestureDetector(
         onTap: () {
           setState(() {
-            // icon == Icons.add
-            // ? provider.incrementQuantity(index)
-            // : provider.decrementQuantity(index);
             if (icon == Icons.add) {
               finalList[index].quantity++;
             } else {
@@ -50,6 +47,10 @@ class _CartDetailsState extends State<CartDetails> {
     }
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Carrito"),
+        centerTitle: true,
+      ),
       body: Column(
         children: [
           const Padding(
@@ -57,8 +58,8 @@ class _CartDetailsState extends State<CartDetails> {
             child: Row(
               children: [
                 Text(
-                  "Carrito",
-                  style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
+                  "Productos en el carrito",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 )
               ],
             ),
@@ -137,18 +138,9 @@ class _CartDetailsState extends State<CartDetails> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '\$${provider.getTotalPrice()}',
+                  '\$${provider.getTotalPrice().toStringAsFixed(2)}',
                   style: const TextStyle(
                       fontSize: 30, fontWeight: FontWeight.bold),
-                ),
-                ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.pop(
-                        context); // Esto regresará a la pantalla anterior
-                  },
-                  icon: const Icon(
-                      Icons.arrow_back), // Icono de flecha hacia atrás
-                  label: const Text("Volver"),
                 ),
                 ElevatedButton.icon(
                   onPressed: () {
@@ -167,7 +159,7 @@ class _CartDetailsState extends State<CartDetails> {
                       MaterialPageRoute(
                         builder: (context) => TicketScreen(
                           cartItems: cartItems,
-                          totalPrice: totalPrice,
+                          precioTotal: totalPrice,
                         ),
                       ),
                     );
